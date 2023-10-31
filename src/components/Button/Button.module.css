@@ -1,0 +1,11 @@
+.button {
+  color: var(--primary-color);
+  min-width: 10rem;
+  padding: 0.7rem;
+  cursor: pointer;
+  font-size: inherit;
+  border: 1px solid var(--primary-color);
+  background-color: var(--bg-color);
+
+  border-radius: 5px;
+}
