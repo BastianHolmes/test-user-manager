@@ -3,17 +3,15 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import styles from "./Form.module.css";
 import { InputProps } from "@/pages/auth/ui/inputFields";
-
-interface InputValue {
-  [name: string]: string;
-}
+import { Credentials } from "@/api/login";
 
 interface FormProps {
   inputs: InputProps[];
+  login: (obj: Credentials) => void;
 }
 
-const Form: React.FunctionComponent<FormProps> = ({ inputs }) => {
-  const [inputValues, setInputValues] = useState<InputValue>({
+const Form: React.FunctionComponent<FormProps> = ({ inputs, login }) => {
+  const [inputValues, setInputValues] = useState<Credentials>({
     username: "",
     password: "",
   });
@@ -27,6 +25,7 @@ const Form: React.FunctionComponent<FormProps> = ({ inputs }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    login(inputValues);
   };
 
   return (
