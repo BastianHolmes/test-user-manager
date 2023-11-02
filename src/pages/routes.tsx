@@ -1,9 +1,9 @@
 import { Navigate, RouteObject } from "react-router-dom";
 import { lazy } from "react";
+import { withAuth } from "@/app/guard/withAuth";
 
 import ErrorPage from "./error";
 import AuthPage from "./auth";
-import { withAuth } from "@/app/guard/withAuth";
 
 const UpdatePage = withAuth(lazy(() => import("./update")));
 const ListPage = withAuth(lazy(() => import("./list")));

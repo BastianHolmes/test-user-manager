@@ -10,7 +10,7 @@ import { getTokenFromCookie } from "@/app/helpers/getToken";
 import { useEffect } from "react";
 
 const LoginForm: React.FunctionComponent = ({}) => {
-  const authError = useSelector((state: any) => state.auth.authData.error);
+  const authError = useSelector((state: any) => state.auth.error);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

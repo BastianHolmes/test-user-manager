@@ -1,5 +1,5 @@
-const ErrorPage: React.FunctionComponent = () => {
-  return <div>ErrorPage</div>;
+const ErrorPage: React.FC = () => {
+  return <div>Something bad happened</div>;
 };
 
 export default ErrorPage;
