@@ -1,13 +1,13 @@
 import styles from "./LoginForm.module.css";
-import { Credentials } from "@/app/api/login";
 import { loginUser } from "@/store/auth/actionCreator";
 import { useAppDispatch } from "@/store";
 import { useSelector } from "react-redux";
-import Form from "@/components/Form/Form";
+import Form from "@/components/shared/Form/Form";
 import { inputs } from "@/pages/auth/ui/inputFields";
 import { useNavigate } from "react-router-dom";
 import { getTokenFromCookie } from "@/app/helpers/getToken";
 import { useEffect } from "react";
+import { ICredentials } from "@/models/ICredentials";
 
 const LoginForm: React.FunctionComponent = ({}) => {
   const authError = useSelector((state: any) => state.auth.error);
@@ -25,7 +25,7 @@ const LoginForm: React.FunctionComponent = ({}) => {
       navigate("/list");
     }
   }, [token]);
-  const handleLogin = (values: Credentials) => {
+  const handleLogin = (values: ICredentials) => {
     dispatch(loginUser(values));
   };
 

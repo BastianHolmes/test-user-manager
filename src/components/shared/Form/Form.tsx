@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Button from "../Button/Button";
-import Input from "../Input/Input";
 import styles from "./Form.module.css";
 import { InputProps } from "@/pages/auth/ui/inputFields";
-import { Credentials } from "@/app/api/login";
+import { ICredentials } from "@/models/ICredentials";
+import Input from "../Input/Input";
 
 interface FormProps {
   defaultValues: any;
@@ -16,7 +16,7 @@ const Form: React.FunctionComponent<FormProps> = ({
   inputs,
   onSubmit,
 }) => {
-  const [inputValues, setInputValues] = useState<Credentials>(defaultValues);
+  const [inputValues, setInputValues] = useState<ICredentials>(defaultValues);
 
   const handleChange = (name: string, value: string) => {
     setInputValues((prevInputValues) => ({

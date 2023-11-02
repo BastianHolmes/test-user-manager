@@ -1,7 +1,8 @@
+import { IUser } from "@/models/IUser";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UserState {
-  users: object[];
+  users: IUser[];
   isLoading: boolean;
   error: string | null;
 }
@@ -22,7 +23,7 @@ export const userReducer = createSlice({
         isLoading: true,
       };
     },
-    loadUsersSuccess: (state, action: PayloadAction<object[]>): UserState => {
+    loadUsersSuccess: (state, action: PayloadAction<IUser[]>): UserState => {
       return {
         ...state,
         isLoading: false,

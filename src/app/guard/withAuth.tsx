@@ -6,7 +6,7 @@ export const withAuth = <P extends object>(
   Component: React.ComponentType<P>
 ): React.FC<P> => {
   const isAuthenticated = (): boolean => {
-    const token = getTokenFromCookie(); // Замените на вашу логику получения токена
+    const token = getTokenFromCookie(); 
 
     return !!token;
   };

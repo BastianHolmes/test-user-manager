@@ -1,14 +1,15 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { loginFailure, loginStart, loginSuccess } from "./authReducer";
-import login, { Credentials } from "@/app/api/login";
+import AuthService from "@/app/api/services/AuthService";
 import { AnyAction } from "redux";
+import { ICredentials } from "@/models/ICredentials";
 
 export const loginUser =
-  (data: Credentials) =>
+  (data: ICredentials) =>
   async (dispatch: Dispatch<AnyAction>): Promise<void> => {
     try {
       dispatch(loginStart());
-      const response = await login(data);
+      const response = await AuthService.login(data);
       const token = response.data.token;
       document.cookie = `token=${token}; path=/;`;
       dispatch(loginSuccess(token));
