@@ -3,18 +3,20 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import styles from "./Form.module.css";
 import { InputProps } from "@/pages/auth/ui/inputFields";
-import { Credentials } from "@/api/login";
+import { Credentials } from "@/app/api/login";
 
 interface FormProps {
+  defaultValues: any;
   inputs: InputProps[];
-  login: (obj: Credentials) => void;
+  onSubmit: (values: any) => void;
 }
 
-const Form: React.FunctionComponent<FormProps> = ({ inputs, login }) => {
-  const [inputValues, setInputValues] = useState<Credentials>({
-    username: "",
-    password: "",
-  });
+const Form: React.FunctionComponent<FormProps> = ({
+  defaultValues,
+  inputs,
+  onSubmit,
+}) => {
+  const [inputValues, setInputValues] = useState<Credentials>(defaultValues);
 
   const handleChange = (name: string, value: string) => {
     setInputValues((prevInputValues) => ({
@@ -23,23 +25,25 @@ const Form: React.FunctionComponent<FormProps> = ({ inputs, login }) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    login(inputValues);
+    onSubmit(inputValues);
   };
 
   return (
-    <form className={styles.form}>
-      {inputs.map((input) => (
-        <Input
-          key={input.id}
-          value={inputValues[input.name]}
-          onChange={(value) => handleChange(input.name, value)}
-          {...input}
-        />
-      ))}
-      <Button text="Submit" onSubmit={handleSubmit} />
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        {inputs.map((input) => (
+          <Input
+            key={input.id}
+            value={inputValues[input.name]}
+            onChange={(value) => handleChange(input.name, value)}
+            {...input}
+          />
+        ))}
+        <Button text="Submit" type="submit" />
+      </form>
+    </>
   );
 };
 

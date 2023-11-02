@@ -1,4 +1,6 @@
+import { AxiosPromise } from "axios";
 import API from "./api";
+import { ILoginResponse } from "@/store/auth/types";
 
 export interface Credentials {
   [key: string]: string;
@@ -6,13 +8,10 @@ export interface Credentials {
   password: string;
 }
 
-const login = async (credentials: Credentials) => {
+const login = async (credentials: Credentials):AxiosPromise<ILoginResponse> => {
   try {
     console.log(credentials);
-    const token = await API.post("/login/", {
-      username: credentials.username,
-      password: credentials.password,
-    });
+    const token = await API.post("/login/", credentials);
     console.log(credentials);
     console.log(token);
     return token;

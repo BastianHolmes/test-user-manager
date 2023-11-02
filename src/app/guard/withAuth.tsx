@@ -1,0 +1,21 @@
+import { Navigate } from "react-router-dom";
+import { getTokenFromCookie } from "../helpers/getToken";
+import React from "react";
+
+export const withAuth = <P extends object>(
+  Component: React.ComponentType<P>
+): React.FC<P> => {
+  const isAuthenticated = (): boolean => {
+    const token = getTokenFromCookie(); // Замените на вашу логику получения токена
+
+    return !!token;
+  };
+
+  return (props: any) => {
+    if (isAuthenticated()) {
+      return <Component {...props} />;
+    } else {
+      return <Navigate to="/" />;
+    }
+  };
+};

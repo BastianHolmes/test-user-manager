@@ -3,9 +3,10 @@ import { lazy } from "react";
 
 import ErrorPage from "./error";
 import AuthPage from "./auth";
+import { withAuth } from "@/app/guard/withAuth";
 
-const UpdatePage = lazy(() => import("./update"));
-const ListPage = lazy(() => import("./list"));
+const UpdatePage = withAuth(lazy(() => import("./update")));
+const ListPage = withAuth(lazy(() => import("./list")));
 
 export const routes: RouteObject[] = [
   {

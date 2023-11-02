@@ -1,12 +1,10 @@
 import styles from "./AuthPage.module.css";
-import Form from "@/components/Form/Form";
-import { inputs } from "./inputFields";
-import login from "@/api/login";
+import LoginForm from "@/components/LoginForm/LoginForm";
 
 const AuthPage: React.FunctionComponent = () => {
   return (
     <div className={styles.authContainer}>
-      <Form inputs={inputs} login={login} />
+      <LoginForm />
     </div>
   );
 };
