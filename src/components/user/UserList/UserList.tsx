@@ -1,5 +1,7 @@
 import { IUser } from "@/models/IUser";
 import styles from "./UserList.module.css";
+import UserItem from "../UserItem";
+import Loader from "@/components/shared/Loader";
 
 interface IUserListProps {
   users: IUser[];
@@ -8,7 +10,11 @@ interface IUserListProps {
 const UserList: React.FunctionComponent<IUserListProps> = ({ users }) => {
   return (
     <ul className={styles.userList}>
-      {users && users.map((user) => <li key={user.id}>{user.username}</li>)}
+      {users.length === 0 ? (
+        <Loader />
+      ) : (
+        users.map((user) => <UserItem key={user.id} user={user} />)
+      )}
     </ul>
   );
 };

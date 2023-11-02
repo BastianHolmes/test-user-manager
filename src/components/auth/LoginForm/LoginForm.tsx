@@ -5,23 +5,22 @@ import { useSelector } from "react-redux";
 import Form from "@/components/shared/Form/Form";
 import { inputs } from "@/pages/auth/ui/inputFields";
 import { useNavigate } from "react-router-dom";
-import { getTokenFromCookie } from "@/app/helpers/getToken";
 import { useEffect } from "react";
 import { ICredentials } from "@/models/ICredentials";
 
 const LoginForm: React.FunctionComponent = ({}) => {
   const authError = useSelector((state: any) => state.auth.error);
+  const token = useSelector((state: any) => state.auth.token);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const token = getTokenFromCookie();
   const defaultValues = {
     username: "test_super",
     password: "Nf<U4f<rDbtDxAPn",
   };
 
   useEffect(() => {
-    if (token) {
+    if (token !== null) {
       navigate("/list");
     }
   }, [token]);

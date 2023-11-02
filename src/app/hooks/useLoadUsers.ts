@@ -12,8 +12,7 @@ export const useLoadUsers = () => {
 
   useEffect(() => {
     dispatch(loadUsers());
-  }),
-    [];
+  }, [dispatch]);
 
-  return Users;
+  return { Users };
 };
