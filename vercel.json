@@ -1,11 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/info/:sem/:id",
+      "source": "/list/update/:id",
       "destination": "/index.html"
     },
     {
-      "source": "/info",
+      "source": "/list",
       "destination": "/index.html"
     },
     {
