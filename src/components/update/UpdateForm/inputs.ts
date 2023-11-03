@@ -50,10 +50,14 @@ export const inputs: InputProps[] = [
 export const Checkboxes: ICheckboxes[] = [
   {
     id: 1,
-    label: "is_superuser",
+    label: "Is Superuser",
+    name: "is_superuser",
+    value: false,
   },
   {
     id: 2,
     label: "is_active",
+    name: "Is Active",
+    value: true,
   },
 ];
