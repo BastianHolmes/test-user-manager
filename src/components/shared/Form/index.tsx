@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "../Button/Button";
+import Button from "../Button";
 import styles from "./Form.module.css";
 import { InputProps } from "@/pages/auth/ui/inputFields";
-import Input from "../Input/Input";
+import Input from "../Input";
 import Checkbox from "../CheckBox";
 import { ICheckboxes } from "@/components/user/AddUserForm/inputs";
 
@@ -56,8 +56,9 @@ const Form: React.FunctionComponent<FormProps> = ({
           {checkboxes?.map((checkbox) => (
             <Checkbox
               label={checkbox.label}
+              name={checkbox.name}
               key={checkbox.id}
-              checked={false}
+              checked={checkbox.value}
               onChange={(value) => handleChange(checkbox.label, value)}
             />
           ))}

@@ -2,7 +2,9 @@ import { InputProps } from "@/pages/auth/ui/inputFields";
 
 export interface ICheckboxes {
   id: number;
+  name: string;
   label: string;
+  value: boolean;
 }
 
 export const inputs: InputProps[] = [
@@ -54,10 +56,14 @@ export const inputs: InputProps[] = [
 export const Checkboxes: ICheckboxes[] = [
   {
     id: 1,
-    label: "is_superuser",
+    name: "is_superuser",
+    label: "Is Superuser",
+    value: false,
   },
   {
     id: 2,
-    label: "is_active",
+    name: "is_active",
+    label: "is Active",
+    value: true,
   },
 ];

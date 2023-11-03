@@ -2,7 +2,7 @@ import styles from "./LoginForm.module.css";
 import { loginUser } from "@/store/auth/actionCreator";
 import { useAppDispatch } from "@/store";
 import { useSelector } from "react-redux";
-import Form from "@/components/shared/Form/Form";
+import Form from "@/components/shared/Form";
 import { inputs } from "@/pages/auth/ui/inputFields";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -30,7 +30,9 @@ const LoginForm: React.FunctionComponent = ({}) => {
 
   return (
     <>
-      {authError && <h3 className={styles.error}>{authError}</h3>}
+      {authError && (
+        <h3 style={{ color: "var(--secondary-color)" }}>{authError}</h3>
+      )}
       <Form
         defaultValues={defaultValues}
         inputs={inputs}

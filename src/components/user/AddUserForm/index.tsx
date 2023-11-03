@@ -1,5 +1,4 @@
-import Form from "@/components/shared/Form/Form";
-import * as React from "react";
+import Form from "@/components/shared/Form";
 import { Checkboxes, inputs } from "./inputs";
 import { useAppDispatch } from "@/store";
 import { IUser } from "@/models/IUser";
