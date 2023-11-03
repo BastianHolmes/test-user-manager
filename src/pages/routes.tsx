@@ -1,12 +1,9 @@
 import { Navigate, RouteObject } from "react-router-dom";
-import { lazy } from "react";
-import { withAuth } from "@/app/guard/withAuth";
 
 import ErrorPage from "./error";
 import AuthPage from "./auth";
-
-const UpdatePage = withAuth(lazy(() => import("./update")));
-const ListPage = withAuth(lazy(() => import("./list")));
+import UpdatePage from "./update";
+import ListPage from "./list";
 
 export const routes: RouteObject[] = [
   {
@@ -17,10 +14,12 @@ export const routes: RouteObject[] = [
   {
     path: "/list",
     element: <ListPage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/list/update/:id",
     element: <UpdatePage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "*",

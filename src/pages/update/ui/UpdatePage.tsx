@@ -2,6 +2,7 @@ import { startTransition } from "react";
 import styles from "./UpdatePage.module.css";
 import { useAuth } from "@/app/hooks/useAuth";
 import UpdateForm from "@/components/update/UpdateForm";
+import { withAuth } from "@/app/guard/withAuth";
 
 const UpdatePage: React.FunctionComponent = () => {
   startTransition(() => {
@@ -14,4 +15,4 @@ const UpdatePage: React.FunctionComponent = () => {
   );
 };
 
-export default UpdatePage;
+export default withAuth(UpdatePage);

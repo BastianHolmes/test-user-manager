@@ -4,9 +4,9 @@ import React from "react";
 
 export const withAuth = <P extends object>(
   Component: React.ComponentType<P>
-): React.FC<P> => {
+): React.ComponentType<P> => {
   const isAuthenticated = (): boolean => {
-    const token = getTokenFromCookie(); 
+    const token = getTokenFromCookie();
 
     return !!token;
   };

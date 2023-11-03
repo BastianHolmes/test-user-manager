@@ -3,14 +3,13 @@ import styles from "./ListPage.module.css";
 import { useAuth } from "@/app/hooks/useAuth";
 import UserList from "@/components/user/UserList/UserList";
 import Button from "@/components/shared/Button";
-import { startTransition, useState } from "react";
+import { useState } from "react";
 import AddUserForm from "@/components/user/AddUserForm";
 import Pagination from "@/components/shared/Pagination";
+import { withAuth } from "@/app/guard/withAuth";
 
-const ListPage: React.FC = ({}) => {
-  startTransition(() => {
-    useAuth();
-  });
+const ListPage: React.FC = () => {
+  useAuth();
   const { Users } = useLoadUsers();
 
   const [addUser, setAddUser] = useState(false);
@@ -68,4 +67,4 @@ const ListPage: React.FC = ({}) => {
   );
 };
 
-export default ListPage;
+export default withAuth(ListPage);
