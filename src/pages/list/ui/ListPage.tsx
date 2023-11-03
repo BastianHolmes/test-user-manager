@@ -7,6 +7,7 @@ import { useState } from "react";
 import AddUserForm from "@/components/user/AddUserForm";
 import Pagination from "@/components/shared/Pagination";
 import { withAuth } from "@/app/guard/withAuth";
+import SearchUser from "@/components/user/SearchUser";
 
 const ListPage: React.FC = () => {
   useAuth();
@@ -43,6 +44,7 @@ const ListPage: React.FC = () => {
             width: "25rem",
             color: addUser ? "red" : "var(--secondary-color)",
             border: `1px solid ${addUser ? "red" : "var(--secondary-color)"}`,
+            marginBottom: "2rem",
           }}
           text={addUser ? "Close" : "Add User"}
           type="button"
@@ -52,6 +54,7 @@ const ListPage: React.FC = () => {
           <AddUserForm />
         ) : (
           <>
+            <SearchUser users={Users} />
             <UserList users={users} />
             {totalPages > 1 && (
               <Pagination
