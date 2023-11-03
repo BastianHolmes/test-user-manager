@@ -12,6 +12,7 @@ interface InputProps {
   required?: boolean;
   value: string;
   onChange: (value: string) => void;
+  setInputValidity: (isValidity: any) => void;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -25,19 +26,39 @@ const Input: React.FC<InputProps> = ({
   onChange,
   pattern,
   required,
+  setInputValidity,
 }) => {
   const [error, setError] = useState("");
+
+  const handleValid = (bool: boolean) => {
+    setInputValidity((prevInputValidity: object) => ({
+      ...prevInputValidity,
+      [name]: bool,
+    }));
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
     setError("");
+    if (pattern) {
+      const isValid = new RegExp(pattern).test(e.target.value);
+      handleValid(isValid);
+    }
   };
 
   const handleBlur = () => {
-    if (required && value.trim() === "") {
-      setError("This field is required!");
-    } else if (pattern && !new RegExp(pattern).test(value)) {
-      setError(errorMessage || "Invalid value!");
+    switch (true) {
+      case required && value.trim() === "":
+        setError("This field is required!");
+        handleValid(false);
+        break;
+      case pattern && !new RegExp(pattern).test(value):
+        setError(errorMessage || "Invalid value!");
+        handleValid(false);
+        break;
+      default:
+        handleValid(true);
+        break;
     }
   };
 

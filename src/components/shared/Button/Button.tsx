@@ -2,6 +2,7 @@ import styles from "./Button.module.css";
 
 interface ButtonProps {
   text: string;
+  disabled?: boolean;
   type: "button" | "submit" | "reset" | undefined;
   style?: React.CSSProperties;
   onClick?: () => void;
@@ -12,6 +13,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   type,
   style,
   onClick,
+  disabled,
 }) => {
   return (
     <button
@@ -19,6 +21,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       type={type}
       style={{ ...style }}
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
     </button>

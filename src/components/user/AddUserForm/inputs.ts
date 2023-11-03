@@ -1,5 +1,10 @@
 import { InputProps } from "@/pages/auth/ui/inputFields";
 
+export interface ICheckboxes {
+  id: number;
+  label: string;
+}
+
 export const inputs: InputProps[] = [
   {
     id: 1,
@@ -44,15 +49,15 @@ export const inputs: InputProps[] = [
     pattern: "^(?=.*[A-Z])(?=.*\\d).{8,128}$",
     required: true,
   },
+];
+
+export const Checkboxes: ICheckboxes[] = [
   {
-    id: 5,
-    name: "role",
-    type: "text",
-    placeholder: "Write 'user' or 'superuser'",
-    errorMessage:
-      "Status should be either 'superuser' or 'user' and no special characters!",
-    label: "Role",
-    pattern: "^(superuser|user)$",
-    required: true,
+    id: 1,
+    label: "is_superuser",
+  },
+  {
+    id: 2,
+    label: "is_active",
   },
 ];

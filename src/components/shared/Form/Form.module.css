@@ -4,3 +4,15 @@
   border: 3px solid var(--text-color);
   border-radius: 7px;
 }
+
+.checkboxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 2rem 0;
+
+  @media (max-width: 500px) {
+    margin: 1.5rem 0;
+    flex-direction: column;
+  }
+}

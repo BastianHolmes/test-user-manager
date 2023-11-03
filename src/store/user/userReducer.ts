@@ -38,10 +38,37 @@ export const userReducer = createSlice({
         error: action.payload,
       };
     },
+    createUserStart: (state): UserState => {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    },
+    createUserSuccess: (state, action: PayloadAction<IUser>): UserState => {
+      return {
+        ...state,
+        isLoading: false,
+        users: [...state.users, action.payload],
+        error: null,
+      };
+    },
+    createUserFailure: (state, action: PayloadAction<string>): UserState => {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    },
   },
 });
 
-export const { loadUsersStart, loadUsersSuccess, loadUsersFailure } =
-  userReducer.actions;
+export const {
+  loadUsersStart,
+  loadUsersSuccess,
+  loadUsersFailure,
+  createUserStart,
+  createUserSuccess,
+  createUserFailure,
+} = userReducer.actions;
 
 export default userReducer.reducer;

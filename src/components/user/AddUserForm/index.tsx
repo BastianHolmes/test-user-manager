@@ -1,20 +1,32 @@
 import Form from "@/components/shared/Form/Form";
 import * as React from "react";
-import { inputs } from "./inputs";
+import { Checkboxes, inputs } from "./inputs";
+import { useAppDispatch } from "@/store";
+import { IUser } from "@/models/IUser";
+import { createUser } from "@/store/user/actionCreator";
 
 const AddUserForm: React.FC = () => {
+  const dispatch = useAppDispatch();
   const AddUserDefaultValues = {
     username: "",
     first_name: "",
     last_name: "",
     password: "",
-    role: "user",
+    is_superuser: false,
+    is_active: false,
   };
+
+  const handleSubmit = (user: IUser) => {
+    dispatch(createUser(user));
+  };
+
   return (
     <Form
       defaultValues={AddUserDefaultValues}
       inputs={inputs}
-      onSubmit={() => {}}
+      checkboxes={Checkboxes}
+      onSubmit={handleSubmit}
+      style={{ marginTop: "2rem" }}
     />
   );
 };

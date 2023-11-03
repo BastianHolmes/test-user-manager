@@ -1,0 +1,7 @@
+.label {
+  color: var(--secondary-color);
+}
+
+.checkbox {
+  margin: 0.5rem 0;
+}

@@ -11,4 +11,13 @@ export default class UserService {
       throw new Error("Failed to get users");
     }
   }
+
+  static async createUser(user: IUser): AxiosPromise<IUser> {
+    try {
+      const response = await API.post("/users/", user);
+      return response;
+    } catch (err) {
+      throw new Error("Failed to create user");
+    }
+  }
 }
