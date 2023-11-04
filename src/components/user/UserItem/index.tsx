@@ -1,7 +1,6 @@
 import { IUser } from "@/models/IUser";
 import styles from "./UserItem.module.css";
 import { useNavigate } from "react-router-dom";
-import { startTransition } from "react";
 
 interface IUserItemProps {
   user: IUser;
@@ -10,9 +9,7 @@ interface IUserItemProps {
 const UserItem: React.FunctionComponent<IUserItemProps> = ({ user }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    startTransition(() => {
-      navigate(`/list/update/${user.id}`);
-    });
+    navigate(`/users/update/${user.id}`);
   };
   return (
     <li className={styles.user} onClick={() => handleClick()}>

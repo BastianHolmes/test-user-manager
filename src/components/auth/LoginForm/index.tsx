@@ -20,7 +20,7 @@ const LoginForm: React.FunctionComponent = ({}) => {
 
   useEffect(() => {
     if (token !== null) {
-      navigate("/list");
+      navigate("/users/list");
     }
   }, [token]);
   const handleLogin = (values: ICredentials) => {

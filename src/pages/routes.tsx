@@ -12,14 +12,20 @@ export const routes: RouteObject[] = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "/list",
-    element: <ListPage />,
+    path: "/users",
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/list/update/:id",
-    element: <UpdatePage />,
-    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "update/:id",
+        element: <UpdatePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "list",
+        element: <ListPage />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
   {
     path: "*",
