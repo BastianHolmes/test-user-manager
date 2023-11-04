@@ -62,7 +62,7 @@ const SearchUser: React.FC<Props> = ({ users }) => {
         value={searchTerm}
         onChange={handleSearch}
         onFocus={handleFocus}
-        placeholder="Search tasks"
+        placeholder="Username or ID"
       />
 
       {isFocused && (
@@ -71,7 +71,7 @@ const SearchUser: React.FC<Props> = ({ users }) => {
           onClick={() => setIsFocused(false)}
         >
           <ul>
-            {searchResults.map((user) => (
+            {searchResults.slice(0, 4).map((user) => (
               <UserItem key={user.id} user={user} />
             ))}
           </ul>
