@@ -16,8 +16,20 @@ const UpdateForm: React.FC = () => {
     return <Loader />;
   }
 
-  const onSubmit = (values: any) => {
-    dispatch(updateUser(values));
+  const onSubmit = (values: Record<string, string | boolean>) => {
+    dispatch(
+      updateUser(
+        values as {
+          username: string;
+          is_active: boolean;
+          is_superuser: boolean;
+          first_name: string;
+          last_name: string;
+          last_login: string;
+          password: string;
+        }
+      )
+    );
     navigate("/users/list");
   };
   return (

@@ -4,7 +4,7 @@ import { InputProps } from "@/pages/auth/ui/AuthPage/inputFields";
 
 interface InputsProps {
   inputs: InputProps[];
-  inputValues: any;
+  inputValues: Record<string, string>;
   handleChange: (name: string, value: string) => void;
   handleBlur: (name: string) => void;
 }

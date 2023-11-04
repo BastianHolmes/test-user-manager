@@ -27,7 +27,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {label}
         </label>
         <input
-          id={`input-${id}`}
           name={name}
           type={type}
           placeholder={placeholder}
