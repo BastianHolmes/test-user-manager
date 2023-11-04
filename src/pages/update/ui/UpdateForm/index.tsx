@@ -17,20 +17,22 @@ const UpdateForm: React.FC = () => {
   }
 
   const onSubmit = (values: Record<string, string | boolean>) => {
-    dispatch(
-      updateUser(
-        values as {
-          username: string;
-          is_active: boolean;
-          is_superuser: boolean;
-          first_name: string;
-          last_name: string;
-          last_login: string;
-          password: string;
-        }
-      )
-    );
-    navigate("/users/list");
+    if (values.password) {
+      dispatch(
+        updateUser(
+          values as {
+            username: string;
+            is_active: boolean;
+            is_superuser: boolean;
+            first_name: string;
+            last_name: string;
+            last_login: string;
+            password: string;
+          }
+        )
+      );
+      navigate("/users/list");
+    }
   };
   return (
     <>
