@@ -73,7 +73,7 @@ const Form = <T extends Record<string, string | boolean>>({
       <form className={styles.form} onSubmit={handleSubmit} style={style}>
         <ListInput
           inputs={inputs}
-          inputValues={inputValues}
+          inputValues={inputValues as Record<string, string>}
           handleChange={handleChange}
           handleBlur={handleBlur}
         />
