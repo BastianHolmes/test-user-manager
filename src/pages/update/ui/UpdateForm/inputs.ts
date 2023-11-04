@@ -1,5 +1,5 @@
 import { ICheckboxes } from "@/components/user/AddUserForm/inputs";
-import { InputProps } from "@/pages/auth/ui/inputFields";
+import { InputProps } from "@/pages/auth/ui/AuthPage/inputFields";
 
 export const inputs: InputProps[] = [
   {
