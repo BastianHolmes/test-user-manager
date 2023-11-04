@@ -1,4 +1,4 @@
-import { InputProps } from "@/pages/auth/ui/inputFields";
+import { InputProps } from "@/pages/auth/ui/AuthPage/inputFields";
 
 export interface ICheckboxes {
   id: number;
@@ -24,7 +24,7 @@ export const inputs: InputProps[] = [
     type: "text",
     placeholder: "first name",
     errorMessage:
-      "First name should have 1-150 characters and no special characters!",
+      "First name should have 1-150 latin characters and no digits or special characters!",
     label: "First name",
     pattern: "^[a-zA-Z]{1,150}$",
     required: true,
@@ -35,7 +35,7 @@ export const inputs: InputProps[] = [
     type: "text",
     placeholder: "last name",
     errorMessage:
-      "Last name should have 1-150 characters and no special characters!",
+      "Last name should have 1-150 latin characters and no digits or special characters!",
     label: "Last name",
     pattern: "^[a-zA-Z]{1,150}$",
     required: true,
@@ -46,7 +46,7 @@ export const inputs: InputProps[] = [
     type: "password",
     placeholder: "Password",
     errorMessage:
-      "Password should include at least 1 letter, 1 capital letter and 1 number and at least 8 characters",
+      "Password should include at least 1 capital letter and 1 number and at least 8 characters",
     label: "Password",
     pattern: "^(?=.*[A-Z])(?=.*\\d).{8,128}$",
     required: true,

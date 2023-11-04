@@ -12,6 +12,7 @@ interface FormProps<T> {
   checkboxes?: ICheckboxes[];
   onSubmit: (values: T) => void;
   style?: React.CSSProperties;
+  btnText: string;
 }
 
 const Form = <T extends Record<string, string | boolean>>({
@@ -20,13 +21,16 @@ const Form = <T extends Record<string, string | boolean>>({
   checkboxes,
   onSubmit,
   style,
+  btnText = "Submit",
 }: FormProps<T>) => {
   const [inputValues, setInputValues] = useState<T>(defaultValues);
   const [inputValidity, setInputValidity] = useState<Record<string, boolean>>(
     {}
   );
+  const [isFormTouched, setIsFormTouched] = useState(false);
 
   const handleChange = (name: string, value: string | boolean): void => {
+    setIsFormTouched(true);
     setInputValues((prevInputValues: T) => ({
       ...prevInputValues,
       [name]: value,
@@ -60,6 +64,7 @@ const Form = <T extends Record<string, string | boolean>>({
   };
 
   const isSubmitDisabled =
+    !isFormTouched ||
     Object.values(inputValidity).some((valid) => !valid) ||
     Object.values(inputValues).some((value) => value === "");
 
@@ -79,7 +84,7 @@ const Form = <T extends Record<string, string | boolean>>({
           />
         </div>
         <Button
-          text="Submit"
+          text={btnText}
           type="submit"
           disabled={isSubmitDisabled}
           style={{

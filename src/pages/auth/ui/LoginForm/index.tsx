@@ -34,6 +34,7 @@ const LoginForm: React.FunctionComponent = (): JSX.Element => {
         <h3 style={{ color: "var(--secondary-color)" }}>{authError}</h3>
       )}
       <Form
+        btnText="Login"
         defaultValues={defaultValues}
         inputs={inputs}
         onSubmit={handleLogin}

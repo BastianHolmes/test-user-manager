@@ -50,7 +50,7 @@ const ListPage: React.FC = () => {
       <div className={styles.listPageContainer}>
         <Button
           style={{
-            width: "25rem",
+            width: addUser ? "50%" : "25rem",
             color: addUser ? "red" : "var(--secondary-color)",
             border: `1px solid ${addUser ? "red" : "var(--secondary-color)"}`,
             marginBottom: "2rem",

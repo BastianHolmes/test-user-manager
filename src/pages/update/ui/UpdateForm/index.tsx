@@ -5,6 +5,7 @@ import { useDefaultValues } from "@/app/hooks/useDefaultValues";
 import { useAppDispatch } from "@/store";
 import { updateUser } from "@/store/user/actionCreator";
 import { useNavigate } from "react-router-dom";
+import Button from "@/components/common/Button";
 
 const UpdateForm: React.FC = () => {
   const defaultValues = useDefaultValues();
@@ -20,12 +21,21 @@ const UpdateForm: React.FC = () => {
     navigate("/users/list");
   };
   return (
-    <Form
-      onSubmit={onSubmit}
-      defaultValues={defaultValues}
-      inputs={inputs}
-      checkboxes={Checkboxes}
-    />
+    <>
+      <Button
+        text="Close"
+        type="button"
+        style={{ width: "50%", color: "red", marginBottom: "2rem" }}
+        onClick={() => navigate("/users/list")}
+      />
+      <Form
+        btnText="Save changes"
+        onSubmit={onSubmit}
+        defaultValues={defaultValues}
+        inputs={inputs}
+        checkboxes={Checkboxes}
+      />
+    </>
   );
 };
 

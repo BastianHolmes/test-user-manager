@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "../Input";
-import { InputProps } from "@/pages/auth/ui/inputFields";
+import { InputProps } from "@/pages/auth/ui/AuthPage/inputFields";
 
 interface InputsProps {
   inputs: InputProps[];

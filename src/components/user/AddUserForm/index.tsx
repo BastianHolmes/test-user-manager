@@ -27,11 +27,11 @@ const AddUserForm: React.FC<AddUserFormProps> = ({ setAddUser }) => {
 
   return (
     <Form
+      btnText="Create user"
       defaultValues={AddUserDefaultValues}
       inputs={inputs}
       checkboxes={Checkboxes}
       onSubmit={handleSubmit}
-      style={{ marginTop: "2rem" }}
     />
   );
 };
