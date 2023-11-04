@@ -1,23 +1,10 @@
 import Form from "../../shared/Form";
-import { useParams } from "react-router-dom";
 import { Checkboxes, inputs } from "@/components/user/AddUserForm/inputs";
-import { useLoadUsers } from "@/app/hooks/useLoadUsers";
-import { useEffect, useState } from "react";
 import Loader from "@/components/shared/Loader";
+import { useDefaultValues } from "@/app/hooks/useDefaultValues";
 
 const UpdateForm: React.FC = () => {
-  const { id } = useParams();
-  const { Users } = useLoadUsers();
-  const currentUser =
-    Users && Users.find((user: any) => user.id === Number(id));
-
-  const [defaultValues, setDefaultValues] = useState(currentUser ?? {});
-
-  useEffect(() => {
-    if (currentUser) {
-      setDefaultValues(currentUser);
-    }
-  }, [currentUser, Users]);
+  const defaultValues = useDefaultValues();
 
   if (Object.keys(defaultValues).length === 0) {
     return <Loader />;

@@ -5,25 +5,26 @@ import Form from "@/components/shared/Form";
 import { inputs } from "@/pages/auth/ui/inputFields";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { ICredentials } from "@/models/ICredentials";
+import { FormValues } from "@/models/ICredentials";
 
-const LoginForm: React.FunctionComponent = ({}) => {
+const defaultValues: FormValues = {
+  username: "test_super",
+  password: "Nf<U4f<rDbtDxAPn",
+};
+
+const LoginForm: React.FunctionComponent = () => {
   const authError = useSelector((state: any) => state.auth.error);
   const token = useSelector((state: any) => state.auth.token);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const defaultValues = {
-    username: "test_super",
-    password: "Nf<U4f<rDbtDxAPn",
-  };
 
   useEffect(() => {
     if (token !== null) {
       navigate("/users/list");
     }
   }, [token]);
-  const handleLogin = (values: ICredentials) => {
+
+  const handleLogin = (values: FormValues): void => {
     dispatch(loginUser(values));
   };
 
@@ -35,7 +36,9 @@ const LoginForm: React.FunctionComponent = ({}) => {
       <Form
         defaultValues={defaultValues}
         inputs={inputs}
-        onSubmit={handleLogin}
+        onSubmit={
+          handleLogin as (values: Record<string, string | boolean>) => void
+        }
       />
     </>
   );

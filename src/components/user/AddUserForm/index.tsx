@@ -13,10 +13,11 @@ const AddUserForm: React.FC = () => {
     password: "",
     is_superuser: false,
     is_active: false,
+    last_login: "",
   };
 
-  const handleSubmit = (user: IUser) => {
-    dispatch(createUser(user));
+  const handleSubmit = (values: IUser) => {
+    dispatch(createUser(values));
   };
 
   return (

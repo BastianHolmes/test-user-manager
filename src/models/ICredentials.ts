@@ -1,5 +1,8 @@
 export interface ICredentials {
-  [key: string]: string;
   username: string;
   password: string;
+}
+
+export interface FormValues extends ICredentials {
+  [key: string]: string | boolean;
 }

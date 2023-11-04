@@ -1,39 +1,62 @@
-import { useState } from "react";
 import Button from "../Button";
 import styles from "./Form.module.css";
 import { InputProps } from "@/pages/auth/ui/inputFields";
-import Input from "../Input";
-import Checkbox from "../CheckBox";
 import { ICheckboxes } from "@/components/user/AddUserForm/inputs";
+import { useState } from "react";
+import ListInput from "../ListInput";
+import ListCheckbox from "../ListCheckbox";
 
-interface FormProps {
-  defaultValues: any;
+interface FormProps<T> {
+  defaultValues: T;
   inputs: InputProps[];
   checkboxes?: ICheckboxes[];
-  onSubmit: (values: any) => void;
+  onSubmit: (values: T) => void;
   style?: React.CSSProperties;
 }
 
-const Form: React.FunctionComponent<FormProps> = ({
+const Form = <T extends Record<string, string | boolean>>({
   defaultValues,
   inputs,
   checkboxes,
   onSubmit,
   style,
-}) => {
-  const [inputValues, setInputValues] = useState(defaultValues);
-  const [inputValidity, setInputValidity] = useState({});
+}: FormProps<T>) => {
+  const [inputValues, setInputValues] = useState<T>(defaultValues);
+  const [inputValidity, setInputValidity] = useState<Record<string, boolean>>(
+    {}
+  );
 
-  const handleChange = (name: string, value: string | boolean) => {
-    setInputValues((prevInputValues: any) => ({
+  const handleChange = (name: string, value: string | boolean): void => {
+    setInputValues((prevInputValues: T) => ({
       ...prevInputValues,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBlur = (name: string): void => {
+    const input = inputs.find((input) => input.name === name);
+    const required = input?.required;
+    const pattern = input?.pattern;
+    const inputValue = inputValues[name];
+
+    const isValid =
+      (required &&
+        typeof inputValue === "string" &&
+        inputValue.trim() === "") ||
+      (pattern &&
+        typeof inputValue === "string" &&
+        !new RegExp(pattern).test(inputValue));
+
+    setInputValidity((prevInputValidity: Record<string, boolean>) => ({
+      ...prevInputValidity,
+      [name]: !isValid,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    if (inputValidity) onSubmit(inputValues);
+    if (Object.values(inputValidity).every((valid) => valid))
+      onSubmit(inputValues);
   };
 
   const isSubmitDisabled =
@@ -43,25 +66,17 @@ const Form: React.FunctionComponent<FormProps> = ({
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit} style={style}>
-        {inputs.map((input) => (
-          <Input
-            key={input.id}
-            value={inputValues[input.name]}
-            onChange={(value) => handleChange(input.name, value)}
-            setInputValidity={setInputValidity}
-            {...input}
-          />
-        ))}
+        <ListInput
+          inputs={inputs}
+          inputValues={inputValues}
+          handleChange={handleChange}
+          handleBlur={handleBlur}
+        />
         <div className={styles.checkboxes}>
-          {checkboxes?.map((checkbox) => (
-            <Checkbox
-              label={checkbox.label}
-              name={checkbox.name}
-              key={checkbox.id}
-              checked={checkbox.value}
-              onChange={(value) => handleChange(checkbox.label, value)}
-            />
-          ))}
+          <ListCheckbox
+            checkboxes={checkboxes ?? []}
+            handleChange={handleChange}
+          />
         </div>
         <Button
           text="Submit"
