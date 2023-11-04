@@ -1,6 +1,6 @@
 import Button from "../Button";
 import styles from "./Form.module.css";
-import { InputProps } from "@/pages/auth/ui/inputFields";
+import { InputProps } from "@/pages/auth/ui/AuthPage/inputFields";
 import { ICheckboxes } from "@/components/user/AddUserForm/inputs";
 import { useState } from "react";
 import ListInput from "../ListInput";

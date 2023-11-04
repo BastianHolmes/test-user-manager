@@ -1,5 +1,5 @@
 import styles from "./AuthPage.module.css";
-import LoginForm from "@/components/auth/LoginForm";
+import LoginForm from "@/pages/auth/ui/LoginForm";
 
 const AuthPage: React.FunctionComponent = () => {
   return (

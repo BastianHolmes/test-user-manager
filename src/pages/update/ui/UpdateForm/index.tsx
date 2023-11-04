@@ -1,6 +1,6 @@
-import Form from "../../shared/Form";
+import Form from "../../../../components/common/Form";
 import { Checkboxes, inputs } from "@/components/user/AddUserForm/inputs";
-import Loader from "@/components/shared/Loader";
+import Loader from "@/components/common/Loader";
 import { useDefaultValues } from "@/app/hooks/useDefaultValues";
 import { useAppDispatch } from "@/store";
 import { updateUser } from "@/store/user/actionCreator";

@@ -1,8 +1,8 @@
 import { loginUser } from "@/store/auth/actionCreator";
 import { useAppDispatch, RootState } from "@/store";
 import { useSelector } from "react-redux";
-import Form from "@/components/shared/Form";
-import { inputs } from "@/pages/auth/ui/inputFields";
+import Form from "@/components/common/Form";
+import { inputs } from "@/pages/auth/ui/AuthPage/inputFields";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { FormValues } from "@/models/ICredentials";
