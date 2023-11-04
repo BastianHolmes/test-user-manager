@@ -1,5 +1,5 @@
 import { loginUser } from "@/store/auth/actionCreator";
-import { useAppDispatch } from "@/store";
+import { useAppDispatch, RootState } from "@/store";
 import { useSelector } from "react-redux";
 import Form from "@/components/shared/Form";
 import { inputs } from "@/pages/auth/ui/inputFields";
@@ -12,9 +12,9 @@ const defaultValues: FormValues = {
   password: "Nf<U4f<rDbtDxAPn",
 };
 
-const LoginForm: React.FunctionComponent = () => {
-  const authError = useSelector((state: any) => state.auth.error);
-  const token = useSelector((state: any) => state.auth.token);
+const LoginForm: React.FunctionComponent = (): JSX.Element => {
+  const authError = useSelector((state: RootState) => state.auth.error);
+  const token = useSelector((state: RootState) => state.auth.token);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -36,9 +36,7 @@ const LoginForm: React.FunctionComponent = () => {
       <Form
         defaultValues={defaultValues}
         inputs={inputs}
-        onSubmit={
-          handleLogin as (values: Record<string, string | boolean>) => void
-        }
+        onSubmit={handleLogin}
       />
     </>
   );
