@@ -20,4 +20,13 @@ export default class UserService {
       throw new Error("Failed to create user");
     }
   }
+
+  static async updateUser(user: IUser): AxiosPromise<IUser> {
+    try {
+      const response = await API.put(`/users/${user.id}`, user);
+      return response;
+    } catch (err) {
+      throw new Error("Failed to update user");
+    }
+  }
 }

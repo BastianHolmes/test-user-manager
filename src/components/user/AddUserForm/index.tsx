@@ -4,7 +4,11 @@ import { useAppDispatch } from "@/store";
 import { IUser } from "@/models/IUser";
 import { createUser } from "@/store/user/actionCreator";
 
-const AddUserForm: React.FC = () => {
+interface AddUserFormProps {
+  setAddUser: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddUserForm: React.FC<AddUserFormProps> = ({ setAddUser }) => {
   const dispatch = useAppDispatch();
   const AddUserDefaultValues = {
     username: "",
@@ -13,11 +17,12 @@ const AddUserForm: React.FC = () => {
     password: "",
     is_superuser: false,
     is_active: false,
-    last_login: "",
+    last_login: "_",
   };
 
   const handleSubmit = (values: IUser) => {
     dispatch(createUser(values));
+    setAddUser(false);
   };
 
   return (

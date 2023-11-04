@@ -51,7 +51,7 @@ const ListPage: React.FC = () => {
           onClick={handleClick}
         />
         {addUser ? (
-          <AddUserForm />
+          <AddUserForm setAddUser={setAddUser}/>
         ) : (
           <>
             <SearchUser users={Users} />

@@ -59,6 +59,29 @@ export const userReducer = createSlice({
         error: action.payload,
       };
     },
+    updateUserStart: (state): UserState => {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    },
+    updateUserSuccess: (state, action: PayloadAction<IUser>): UserState => {
+      return {
+        ...state,
+        isLoading: false,
+        users: state.users.map((user) =>
+          user.id === action.payload.id ? action.payload : user
+        ),
+        error: null,
+      };
+    },
+    updateUserFailure: (state, action: PayloadAction<string>): UserState => {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    },
   },
 });
 
@@ -69,6 +92,9 @@ export const {
   createUserStart,
   createUserSuccess,
   createUserFailure,
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
 } = userReducer.actions;
 
 export default userReducer.reducer;
