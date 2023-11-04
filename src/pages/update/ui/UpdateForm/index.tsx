@@ -37,13 +37,13 @@ const UpdateForm: React.FC = () => {
   return (
     <>
       <Button
-        text="Close"
+        text="Back"
         type="button"
         style={{ width: "50%", color: "red", marginBottom: "2rem" }}
         onClick={() => navigate("/users/list")}
       />
       <Form
-        btnText="Save changes"
+        btnText="Update user"
         onSubmit={onSubmit}
         defaultValues={defaultValues}
         inputs={inputs}

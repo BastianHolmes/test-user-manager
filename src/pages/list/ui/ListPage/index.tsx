@@ -45,7 +45,7 @@ const ListPage: React.FC = () => {
             border: `1px solid ${addUser ? "red" : "var(--secondary-color)"}`,
             marginBottom: "2rem",
           }}
-          text={addUser ? "Close" : "Add User"}
+          text={addUser ? "Back" : "Create User"}
           type="button"
           onClick={handleClick}
         />
