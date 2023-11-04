@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { FormValues } from "@/models/ICredentials";
 
 const defaultValues: FormValues = {
-  username: "test_super",
+  username: "",
   password: "Nf<U4f<rDbtDxAPn",
 };
 
